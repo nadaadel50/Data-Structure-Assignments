@@ -1,0 +1,115 @@
+#include <bits/stdc++.h>
+using namespace std;
+template <class t>
+class Queue{
+  private :
+  struct node {
+    t value;
+    node* next;
+  };
+  node* front;
+  node* rear;
+  int length;
+  public:
+  Queue(){
+    front=NULL;
+    rear= NULL;
+    length=0;
+  }
+  bool isEmpty(){
+    return (front==NULL&&rear==NULL);
+  }
+  void enqueue (t element ){
+    if (isEmpty()){
+      front = new node ;
+      front-> value = element;
+      front->next=NULL;
+      rear=front;
+      length++;
+          }
+    else {
+ node* newnode=new node ;
+ newnode-> value = element ;
+ newnode-> next= NULL;
+ rear->next=newnode;
+ rear =newnode;
+ length++;
+          }
+  }
+  t dequeue (){
+    if (isEmpty())
+   { cout<<"queue is empty !\n";
+     return t ();}
+    else if (length ==1)
+    { t deleted = front->value;
+      front =NULL;
+      rear=NULL;
+      length--;
+      return deleted;
+    }
+    else
+   { node* temp = front ;
+   t deleted = temp->value;
+    front = front ->next;
+    temp->next=NULL;
+    delete temp;
+    length--;
+    return deleted;}
+  }
+  t first (){
+    if (isEmpty())
+   { cout<<"queue is empty";
+    return t();}
+    else
+   return front->value;
+  }
+  int queuesize(){
+    return length;
+  }
+  void clear (){
+    if (isEmpty())
+    {
+      cout<<"queue is empty\n";
+    }
+    else{
+      node* current;
+    while(front !=NULL) {
+         current = front;
+        front =front ->next;
+        delete current;
+    } 
+    rear =NULL;
+    length=0;
+  }}
+void print (){
+  node*ptr = front;
+  cout<<"[";
+  while (ptr!=NULL)
+  { 
+cout<<ptr->value<<" ";
+ptr= ptr->next;
+     } cout<<']';
+}
+
+
+};
+int main()
+{
+ Queue<int> q1;
+ cout<<q1.isEmpty()<<"\n";
+ q1.enqueue(100);
+  q1.enqueue(200);
+   q1.enqueue(300);
+   q1.enqueue(400);
+  cout<<q1.dequeue()<<" is dequeued from the queue\n";
+  cout<<"the top element is: "<<q1.first()<<"\n";
+  cout<<q1.isEmpty()<<"\n";
+  q1.print();
+  q1.clear();
+  q1.enqueue(500);
+   cout<<"the size of queue is : "<<q1.queuesize()<<"\n";
+   q1.enqueue(560);
+   q1.print();
+
+
+}

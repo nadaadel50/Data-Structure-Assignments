@@ -1,0 +1,116 @@
+# include <bits/stdc++.h>
+using namespace std;
+
+template<class T>
+class Stack{
+private:
+    struct Node{
+        T value;
+        Node* next;
+    };
+    Node* topStack;
+
+public:
+    Stack(){
+        topStack=NULL;
+    }
+
+    void push(T newItem){
+        Node* newNode = new Node;
+        newNode->value= newItem;
+        newNode->next= topStack;
+        topStack = newNode;
+    }
+
+    bool isEmpty(){
+        return topStack==NULL;
+    }
+
+    T pop(){
+        if (isEmpty()) {
+            cout << "Stack is empty." << endl;
+            return T(); // Return default value for type T
+        }
+        else{
+          Node* temp = topStack;
+          T poppedElement = temp->value;
+            topStack =topStack->next;
+          delete temp;
+          return poppedElement;
+        }
+    }
+
+    T top() {
+        if (isEmpty()) {
+            cout << "Stack is empty." << endl;
+            return T();
+        } else {
+            return topStack->value;
+        }
+    }
+
+    int stackSize(){
+        int size = 0;
+        Node* temp = topStack;
+        while(temp != NULL){
+            size++;
+            temp=temp->next;
+        }
+        return size;
+    }
+
+    void clear(){
+        while(!isEmpty()){
+            pop();
+        }
+    }
+
+    void print(){
+        Node* temp = topStack;
+        cout<<"[ ";
+        while(temp != NULL){
+            cout<<temp->value<<" ";
+            temp=temp->next;
+        }
+        cout<<"]";
+        cout<<endl;
+    }
+};
+int main() {
+
+    Stack<int>s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+
+    cout << s.pop() << " is popped from the stack" << endl;
+    cout << "The top element is: " << s.top() << endl;
+
+    s.print();
+    s.clear();
+    s.push(5);
+    s.print();
+    cout << "The size of the stack is: " << s.stackSize() << endl;
+
+    cout<<"-------------------------------------------\n";
+
+    Stack<string>s2;
+    s2.push("Ahmed");
+    s2.push("Mohammed");
+    s2.push("Mona");
+    s2.push("Noha");
+
+    cout << s2.pop() << " is popped from the stack" << endl;
+    cout << "The top element is: " << s2.top() << endl;
+
+    s2.print();
+    s2.clear();
+    s2.push("Nada");
+    s2.print();
+    cout << "The size of the stack is: " << s2.stackSize() << endl;
+
+
+    return 0;
+}
+

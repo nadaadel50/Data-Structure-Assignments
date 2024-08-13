@@ -1,0 +1,51 @@
+Algorithm:Selection Sort
+Number of comparisons: 
+Running Time:44 milliseconds
+
+Mariam
+69712
+3.7
+Ali
+3541
+3.5
+Sara Ahmed
+78697
+3.1
+Mohamed Kamal
+97848
+2.2
+
+Algorithm:insertion sort
+Number of comparisons: 
+Running Time:42 milliseconds
+
+Mariam
+69712
+3.7
+Ali
+3541
+3.5
+Sara Ahmed
+78697
+3.1
+Mohamed Kamal
+97848
+2.2
+
+Algorithm:Merge Sort
+Number of comparisons: nlogn
+Running Time:75 milliseconds
+
+Mariam
+69712
+3.7
+Ali
+3541
+3.5
+Sara Ahmed
+78697
+3.1
+Mohamed Kamal
+97848
+2.2
+

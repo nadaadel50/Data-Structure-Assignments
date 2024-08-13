@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int max_size=100;
+template <class t>
+class Queue{
+  private :
+  int rear , front ;
+  t arr[max_size];
+  public:
+  Queue(){
+    front = -1;
+    rear=-1;
+  }
+ void enqueue(t element){
+   if (rear >=max_size-1)
+   cout<<"queue is full\n";
+   else if (rear==-1&&front==-1)
+   {front++;
+   arr[++rear]=element;
+   }
+   else 
+ arr[++rear]=element;
+  
+ }
+ bool isEmpty(){
+  if (front<0)
+  return true;
+  else 
+  return false ;
+
+ }
+ t dequeue (){
+  if (isEmpty()){
+    cout<<"queue is empty !\n";
+    return t();
+  }
+  else {
+    t deleted_element;
+    deleted_element=arr[front];
+    front++;
+    return deleted_element;
+
+  }
+ }
+ t first (){
+  if (isEmpty()){
+    cout<<"queue is empty \n";
+    return t();
+  }
+  else
+  return arr[front];
+ }
+ int queuesize(){
+  return rear+1;
+ }
+ void clear (){
+  front = -1;
+  rear =-1;
+
+ }
+ void print (){
+  cout<<'[';
+  for (size_t i = front; i <= rear; i++)
+  {
+   cout <<arr[i]<<" ";
+  }
+  cout<<"]\n";
+  
+ }
+
+  
+};
+int main()
+{
+ Queue<int> q;
+cout<< q.isEmpty();
+ cout<<endl;
+q.enqueue(1);
+q.enqueue(2);
+q.enqueue(3);
+q.enqueue(4);
+q.enqueue(5);
+cout<<q.dequeue()<<" is dequeued from the queue "<<endl;
+cout<<"the first element is:"<<q.first()<<endl;
+q.print();
+q.clear();
+q.enqueue(10);
+q.print();
+cout<<"the size is :"<<q.queuesize() <<endl;
+}
